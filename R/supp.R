@@ -21,7 +21,7 @@ build_qnam <- function(dataset, qnam, qlabel, idvar, qeval, qorig,
                        verbose = c("message", "warn", "silent")) {
   verbose <- validate_verbose(verbose)
 
-    # Detect whether this is an AP domain (APID) or standard domain (USUBJID)
+  # Detect whether this is an AP domain (APID) or standard domain (USUBJID)
   is_ap <- "APID" %in% names(dataset)
   is_subject <- "USUBJID" %in% names(dataset)
 
@@ -73,7 +73,8 @@ build_qnam <- function(dataset, qnam, qlabel, idvar, qeval, qorig,
   test_out <- dup_sup %>%
     distinct()
   if (nrow(out) != nrow(test_out)) {
-    stop(paste0(
+    stop(
+      paste0(
         "The combination of STUDYID, RDOMAIN, ", id_var, ", IDVARVAL, QNAM is ambiguous. Consider modifying the IDVAR"
       ),
       call. = FALSE
@@ -175,7 +176,7 @@ combine_supp <- function(dataset, supp) {
     return(dataset)
   }
 
-    # Detect whether this is an AP supp (APID) or standard supp (USUBJID)
+  # Detect whether this is an AP supp (APID) or standard supp (USUBJID)
   is_ap <- "APID" %in% names(supp)
   is_subject <- "USUBJID" %in% names(supp)
 
@@ -220,9 +221,9 @@ combine_supp <- function(dataset, supp) {
     stop("Parent dataset contains both APID and USUBJID. Only one is permitted.", call. = FALSE)
   }
 
-    # Validate that required key columns are present in the parent dataset
+  # Validate that required key columns are present in the parent dataset
   required_parent_cols <- c("STUDYID", "DOMAIN", id_var)
-  mis_parent_col <- setdiff(required_parent_cols,  names(dataset))
+  mis_parent_col <- setdiff(required_parent_cols, names(dataset))
 
   if (length(mis_parent_col) > 0) {
     stop(
