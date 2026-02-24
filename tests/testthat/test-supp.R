@@ -485,7 +485,6 @@ test_that("combine_supp: extra SUPP rows that do not match core raise a warning 
 })
 
 test_that("combine_supp:errors if supp has both APID and USUBJID", {
-
   dataset <- data.frame(
     STUDYID = "S1",
     DOMAIN  = "AE",
@@ -514,7 +513,6 @@ test_that("combine_supp:errors if supp has both APID and USUBJID", {
 
 
 test_that("combine_supp:errors if supp has neither APID nor USUBJID", {
-
   dataset <- data.frame(
     STUDYID = "S1",
     DOMAIN  = "AE",
@@ -540,7 +538,6 @@ test_that("combine_supp:errors if supp has neither APID nor USUBJID", {
 })
 
 test_that("combine_supp:supports APID-based supplemental datasets", {
-
   dataset <- data.frame(
     STUDYID = "S1",
     DOMAIN  = "APSC",
@@ -568,7 +565,6 @@ test_that("combine_supp:supports APID-based supplemental datasets", {
 })
 
 test_that("combine_supp:errors if parent dataset has both APID and USUBJID", {
-
   dataset <- data.frame(
     STUDYID = "S1",
     DOMAIN  = "AE",
@@ -596,7 +592,6 @@ test_that("combine_supp:errors if parent dataset has both APID and USUBJID", {
 })
 
 test_that("combine_supp:errors when required parent key columns are missing", {
-
   dataset <- data.frame(
     STUDYID = "S1",
     DOMAIN  = "AE",
@@ -796,4 +791,3 @@ test_that("build_qnam: uses APID when present and returns APID column (not USUBJ
   expect_false("USUBJID" %in% names(out))
   expect_identical(out$APID, c("A01", "A01"))
 })
-
